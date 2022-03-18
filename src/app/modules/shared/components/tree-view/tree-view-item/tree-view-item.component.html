@@ -1,0 +1,44 @@
+<li class="list-unstyled">
+   <span *ngIf="pNodes.length > 1" class="caret">
+      <div class="form-check">
+        <input (change)="selectNode($event, selectedNode.id, 'all')" class="form-check-input" type="checkbox">
+        <label class="form-check-label">all</label>
+      </div>
+  </span>
+</li>
+<li *ngIf="pNodes.length > 0">
+  <ul>
+    <li *ngFor="let rootNode of pNodes ? pNodes : []">
+      <input
+        class="form-check-input mt-1"
+        type="checkbox"
+        id="{{ rootNode.id }}"
+        (change)="selectNode($event, rootNode.id)"
+        [checked]="rootNode?.selected"
+        [id]="rootNode.id"
+      />
+      <label class="form-check-label"
+        >{{ rootNode.label }} ({{ rootNode.count }})</label
+      >
+      <span
+        (click)="rootNode.show = !rootNode?.show"
+        *ngIf="!rootNode?.show"
+        class="ml-2 pointer"
+        >[+]</span
+      >
+      <span
+        (click)="rootNode.show = !rootNode?.show"
+        *ngIf="rootNode?.show"
+        class="ml-2 pointer"
+        >[-]</span
+      >
+      <ng-container *ngIf="nodes">
+        <app-tree-view
+          [nodes]="nodes"
+          [selectedNode]="rootNode"
+          [toggle]="rootNode?.show"
+        ></app-tree-view>
+      </ng-container>
+    </li>
+  </ul>
+</li>
