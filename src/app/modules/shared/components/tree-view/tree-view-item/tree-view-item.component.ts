@@ -58,9 +58,9 @@ export class TreeViewItemComponent implements OnInit {
         console.log(selectedNodes);
         console.log(child.id);
         console.log(index);
-selectedNodes.splice(index, 1);
-        if (index > -1) {
 
+        if (index > -1) {
+          selectedNodes.splice(index, 1);
         }
       }
 
