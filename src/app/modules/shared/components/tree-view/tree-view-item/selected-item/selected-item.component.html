@@ -1,0 +1,16 @@
+<div class="tags">
+<ng-container>
+    <button *ngIf="selectedList && showMe" (click)="removeAll($event)"  class="btn btn-secondary">
+    Remove All
+
+  </button>
+</ng-container>
+<ng-container *ngFor="let item of selectedList ? selectedList : []">
+  <button (click)="removeSelectItem(item);" class="btn btn-primary">
+    {{ item.label }}
+    <span >X</span>
+  </button>
+
+</ng-container>
+
+</div>
