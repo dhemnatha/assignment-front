@@ -1,43 +1,46 @@
-<li class="list-unstyled">
-  <span *ngIf="pNodes.length > 1">
-    <div>
+<li *ngIf="pNodes.length > 1">
+  <ul>
+    <div class="all">
       <label class="form-control">
         <input
+        #treeViewCheckboxAll
+        class="selectedNode.id"
+        id=0
           (change)="selectNode($event, selectedNode.id, 'all')"
           type="checkbox"
         />
         All</label
       >
     </div>
-  </span>
-</li>
-<li *ngIf="pNodes.length > 0">
-  <ul>
-    <li *ngFor="let rootNode of pNodes ? pNodes : []">
+    <li *ngFor="let node of pNodes ? pNodes : []">
       <label class="form-control">
         <input
           type="checkbox"
-          id="{{ rootNode.id }}"
+          id="{{ node.id }}"
+          #treeViewCheckbox
           name="checkbox"
-          (change)="selectNode($event, rootNode.id)"
-          [checked]="rootNode?.selected"
-          [id]="rootNode.id"
+          (change)="selectNode($event, node.id)"
+          [checked]="node?.selected"
+          [id]="node.id"
         />
-        {{ rootNode.label }} ({{ rootNode.count }})
+        {{ node.label }} ({{ node.count }})
       </label>
-      <span  (click)="rootNode.show = !rootNode?.show" *ngIf="!rootNode?.show"
-        ><i class="arrow right"></i
-      ></span>
-      <span (click)="rootNode.show = !rootNode?.show" *ngIf="rootNode?.show"
-        ><i class="arrow down"></i
-      ></span>
-
+      <ng-container>
+        <span (click)="node.show = !node?.show" *ngIf="!node?.show"
+          ><i class="arrow right"></i
+        ></span>
+        <span (click)="node.show = !node?.show" *ngIf="node?.show"
+          ><i class="arrow down"></i></span
+      ></ng-container>
       <ng-container *ngIf="nodes">
         <app-tree-view
           [nodes]="nodes"
-          [selectedNode]="rootNode"
+          [selectedNode]="node"
+          [toggle]="node?.show"
+
         ></app-tree-view>
       </ng-container>
     </li>
   </ul>
 </li>
+

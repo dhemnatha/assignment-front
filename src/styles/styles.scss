@@ -10,3 +10,35 @@ html {
 ul li {
   list-style: none;
 }
+.btn {
+  appearance: none;
+  -webkit-appearance: none;
+  font-family: sans-serif;
+  font-size: 1em;
+  cursor: pointer;
+  padding: 12px;
+  margin: 5px;
+  min-width: 100px;
+  border: 0px;
+  -webkit-transition: background-color 100ms linear;
+  -ms-transition: background-color 100ms linear;
+  transition: background-color 100ms linear;
+}
+.btn-primary {
+  background: #8d8f91;
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  background: #a6a7a8;
+  color: #ffffff;
+}
+
+.btn-secondary {
+  background: #f31a1a;
+  color: #ffffff;
+}
+.btn-secondary:hover {
+  background: #fd2323;
+  color: #ffffff;
+}

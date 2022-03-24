@@ -1,38 +1,8 @@
 <div fxFlexAlign="center">
   <ul>
-       <app-tree-view-item  *ngIf="selectedNode?.show"
+       <app-tree-view-item id="0" class="dummy" *ngIf="selectedNode?.show"
             [nodes]="nodes"
             [selectedNode]="selectedNode"
           ></app-tree-view-item>
-    <!-- <li *ngFor="let rootNode of root"> -->
-      <!-- <input
-        class="form-check-input mt-1"
-        type="checkbox"
-        id="{{ rootNode.category_id }}"
-        (click)="clickEventHandler(rootNode, $event)"
-      />
-      <label class="form-check-label"
-        >{{ rootNode.name }} ({{ rootNode.count }})</label
-      > -->
-      <!-- {{selectedNodes | json}} -->
-      <!-- <div *ngFor="let item of selectedNodes">
-        <ul *ngIf="item.parent_id == rootNode.category_id">
-          <li>
-            {{ item.name }}{{ item.parent_id }}
-          </li>
-        </ul>
-      </div> -->
-      <!-- {{selectedNodes[0].parent_id |json}} -->
-      <!-- <ng-container *ngIf="selectedNodes">
-        <div *ngFor="let item of selectedNodes">
-          <app-tree-view-item  *ngIf="item.parent_id == rootNode.category_id"
-            [root]="selectedNodes"
-            [nodes]="nodes"
-            [filter]="filter"
-          ></app-tree-view-item>
-        </div>
-      </ng-container> -->
-      <!-- <app-listing [filter]="filter"></app-listing> -->
-    <!-- </li> -->
   </ul>
 </div>

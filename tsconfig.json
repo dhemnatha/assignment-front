@@ -4,6 +4,9 @@
   "compilerOptions": {
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
+    "paths": {
+      "@app/shared": ["src/app/modules/shared"]
+    },
     "forceConsistentCasingInFileNames": true,
     "strict": false,
     "noImplicitOverride": true,
