@@ -13,10 +13,9 @@
           class="form-control"
           value="demo@demo.com"
         />
-        <!-- <label for="email">Email</label> -->
         <div
           *ngIf="f['email'].touched && f['email'].invalid"
-          class="alert alert-danger"
+          class="danger-message"
         >
           <div *ngIf="f['email'].errors && f['email'].errors['required']">
             Email is required.
@@ -37,7 +36,7 @@
 
         />
         <!-- <label for="password">Password</label> -->
-        <div *ngIf="f['password'].touched && f['password'].invalid" class="alert alert-danger">
+        <div *ngIf="f['password'].touched && f['password'].invalid" class="danger-message">
             <div *ngIf="f['password'].errors && f['password'].errors['required']">Password is required.</div>
            </div>
       </div>

@@ -1,15 +1,8 @@
-
 import { NgModule } from '@angular/core';
-
 import { RouterModule, Routes } from '@angular/router';
-
 import { AuthGuard } from './modules/auth/auth.guard';
-
-
 import { DefaultComponent } from './modules/layouts/default/default.component';
-
 import { DashboardComponent } from 'src/app/modules/dashboard/dashboard.component';
-
 import { SigninComponent } from './modules/login/signin/signin.component';
 
 

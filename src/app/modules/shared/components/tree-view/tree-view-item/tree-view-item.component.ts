@@ -3,14 +3,10 @@ import {
   Component,
   ElementRef,
   Input,
-  OnChanges,
   OnInit,
   QueryList,
-  SimpleChanges,
-  ViewChild,
   ViewChildren,
 } from '@angular/core';
-
 import { TreeViewService } from '../tree-view.service';
 @Component({
   selector: 'app-tree-view-item',
@@ -56,7 +52,7 @@ export class TreeViewItemComponent implements OnInit {
       }
     });
     this.treeViewService.removeAllSelectedItem$.subscribe((value) => {
-        this.selectNode(null, null, 'removeAll');
+      this.selectNode(null, null, 'removeAll');
     });
   }
 
@@ -74,7 +70,6 @@ export class TreeViewItemComponent implements OnInit {
     }
 
     if (selectionMode == 'removeAll') {
-
       // Remove Single
       if (this.treeViewCheckbox != undefined) {
         this.treeViewCheckbox.forEach((checkbox) => {
@@ -99,8 +94,6 @@ export class TreeViewItemComponent implements OnInit {
         targetElement.checked === false
       ) {
         child.selected = false;
-        // child.show = false;
-        // Remove Single
         this.unSelectItem(child);
         return;
       }
@@ -110,12 +103,9 @@ export class TreeViewItemComponent implements OnInit {
         targetElement.checked === true
       ) {
         child.selected = true;
-        // child.show = true;
         this.treeViewService.setItems(Array(child));
         return;
       }
-
-
 
       if (selectionMode == 'remove' && child.id == id) {
         // Remove Single
@@ -137,47 +127,8 @@ export class TreeViewItemComponent implements OnInit {
           });
         }
       }
-
     });
   }
-
-  // public selectNodes(parentId, isChecked): void {
-  //   const selectedNodes = this.nodes.filter(
-  //     (parent) => parent.parent_id === parentId
-  //   );
-  //   this.pNodes = [];
-  //   let removal;
-
-  //   // console.log(this.selectedList);
-  //   selectedNodes.forEach((items) => {
-  //     items.selected = isChecked;
-
-  //     if (items.selected === false) {
-  //       removal = this.nodes.filter(
-  //         (child) => child.parent_id === this.selectedNode.id
-  //       );
-  //     }
-  //     this.selectedList.find((item) => {
-  //       if (item == items) {
-  //         const index = this.selectedList.indexOf(item);
-  //         if (index > -1) {
-  //           this.selectedList.splice(index, 1);
-  //         }
-  //       }
-  //     });
-
-  //     this.pNodes = this.nodes.filter((child) => {
-  //       return child.parent_id === this.selectedNode.id;
-  //     });
-  //   });
-  //   //
-  //   if (removal != undefined) {
-  //     this.removeAllSelectItem(removal);
-  //   }
-  //   if (!removal || removal == undefined) {
-  //     this.treeViewService.setItems(this.pNodes);
-  //   }
-  // }
 
   private unSelectItem(node) {
     this.selectedList.find((object) => {
@@ -187,15 +138,6 @@ export class TreeViewItemComponent implements OnInit {
         if (index > -1) {
           this.selectedList.splice(index, 1);
         }
-      }
-    });
-  }
-
-  private removeAllSelectItem(node) {
-    node.find((object) => {
-      const index = this.selectedList.indexOf(object);
-      if (index > -1) {
-        this.selectedList.splice(index, 1);
       }
     });
   }

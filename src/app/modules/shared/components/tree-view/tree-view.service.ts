@@ -30,8 +30,6 @@ export class TreeViewService {
     this.removeSelectedItems$.next(data);
   }
   setRemoveAllItems(data: any) {
-    console.log(data);
-
     this.removeAllSelectedItems$.next(data);
   }
 }

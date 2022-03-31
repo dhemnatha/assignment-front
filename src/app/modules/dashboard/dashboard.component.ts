@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Node } from '../shared/interfaces/node';
 import { Category } from '../category/models/category';
 import { CategoryService } from '../category/services/category.service';
-import { TreeViewService } from '../../modules/shared/components/tree-view/tree-view.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -18,8 +17,7 @@ export class DashboardComponent implements OnInit {
   public selectedList;
 
   constructor(
-    private categoryService: CategoryService,
-    private treeViewService: TreeViewService
+    private categoryService: CategoryService
   ) {}
 
   ngOnInit(): void {
@@ -30,7 +28,7 @@ export class DashboardComponent implements OnInit {
     this.categoryService.getAll().subscribe((categories) => {
       categories.map((categories) => {
         this.nodes.push({
-          id: categories.category_id,
+          id: categories.id,
           parent_id: categories.parent_id,
           label: categories.name,
           count: categories.count,
@@ -49,6 +47,5 @@ export class DashboardComponent implements OnInit {
 
   public ngDoCheck(): void {
     this.filteredCategoryData = this.nodes.filter((item) => item.selected);
-    // console.log(this.selectedList);
   }
 }

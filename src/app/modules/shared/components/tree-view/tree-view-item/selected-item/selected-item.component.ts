@@ -38,6 +38,5 @@ export class SelectedItemComponent implements OnInit {
   removeAll(item) {
     this.selectedList = [];
     this.treeViewService.setRemoveAllItems('removeAll');
-    // this.showMe=false;
   }
 }
